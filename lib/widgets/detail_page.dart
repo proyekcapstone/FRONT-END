@@ -69,6 +69,7 @@ class DetailWidget extends StatelessWidget {
             Text('lorem ipsum', style: Theme.of(context).textTheme.bodyText1),
           ]),
         ),
+        Container(child: DetailTab())
       ],
     ))));
   }

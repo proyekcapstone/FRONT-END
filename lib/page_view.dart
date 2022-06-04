@@ -1,21 +1,24 @@
 import 'package:capstone_project_jti/common/style.dart';
+import 'package:capstone_project_jti/widgets/detail_page.dart';
 import 'package:capstone_project_jti/widgets/home.dart';
+import 'package:capstone_project_jti/widgets/profile_page.dart';
 import 'package:flutter/material.dart';
 
-class PageView extends StatefulWidget {
+class PageViewNew extends StatefulWidget {
   static const routeName = '/page_view';
 
-  const PageView({Key key}) : super(key: key);
+  const PageViewNew({Key key}) : super(key: key);
 
   @override
-  _PageViewState createState() => _PageViewState();
+  _PageViewNewState createState() => _PageViewNewState();
 }
 
-class _PageViewState extends State<PageView> {
+class _PageViewNewState extends State<PageViewNew> {
   int pageIndex = 0;
 
   final List<Widget> page = [
-    const HomeWidget(),
+    HomeWidget(),
+    ProfileWidget(),
   ];
 
   void onTapped(int index) {
@@ -40,13 +43,13 @@ class _PageViewState extends State<PageView> {
             ),
             label: 'Home Page',
           ),
-          BottomNavigationBarItem(
+          /*BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
               color: Colors.black,
             ),
             label: 'Search Page',
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
@@ -55,6 +58,7 @@ class _PageViewState extends State<PageView> {
             label: 'Profile Page',
           ),
         ],
+        onTap: onTapped,
       ),
     );
   }

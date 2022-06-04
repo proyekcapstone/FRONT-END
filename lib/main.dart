@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         textTheme: myTextTheme,
         primaryColor: primaryColor,
       ),
-      home: DetailTab(),
+      home: PageViewNew(),
     );
   }
 }
