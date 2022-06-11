@@ -14,30 +14,35 @@ class SearchPage extends StatelessWidget {
               child: Column(
         children: [
           Stack(
-            children: [
-              Container(
-                height: size.height * 0.2,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text('Search',
-                      style: Theme.of(context).textTheme.headline1),
-                ),
-              ),
-              TextFormField(
-                controller: null,
-                decoration: InputDecoration(
-                    hintText: 'Text here',
-                    border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black)),
-                    icon: Icon(
-                      Icons.search,
-                      size: 40,
-                      color: primaryColor,
-                    )),
-              ),
-            ],
+            children: [Container(
+              height: size.height * 0.25,
+              decoration: BoxDecoration(
+                  color: softColor,
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(45),
+                      bottomRight: Radius.circular(45))),
+            ),
+            Padding(padding: EdgeInsets.all(20.0),
+            child: Text('Search', style: Theme.of(context).textTheme.headline1),)
+        ]),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: TextField(
+              controller: null,
+              decoration: InputDecoration(
+                  hintText: 'Text here',
+                  border: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black)),
+                  suffixIcon: Icon(
+                    Icons.search,
+                    size: 30,
+                    color: primaryColor,
+                  )),
+            ),
           ),
-          ComponentListWidget(listHeight: 120.0,)
+          ComponentListWidget(
+            listHeight: 100.0,
+          )
         ],
       ))),
     );

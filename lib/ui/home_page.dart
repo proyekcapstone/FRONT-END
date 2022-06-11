@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       children: [
         Stack(clipBehavior: Clip.none, children: <Widget>[
           Container(
-            height: size.height * 0.2,
+            height: size.height * 0.25,
             decoration: BoxDecoration(
                 color: primaryColor,
                 borderRadius: const BorderRadius.only(
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 100,
+            top: 135,
             left: 0,
             child: Padding(
               padding: const EdgeInsets.all(20.0),

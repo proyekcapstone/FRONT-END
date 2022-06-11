@@ -15,9 +15,9 @@ class ComponentCardWidget extends StatelessWidget {
           child: Column(
             children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset('asset/malioboro.png', height: cardHeight,)),
             ),
             Text('Malioboro', style: Theme.of(context).textTheme.subtitle1),
