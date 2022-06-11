@@ -1,28 +1,29 @@
-import 'package:capstone_project_jti/widgets/profile_page.dart';
+import 'package:capstone_project_jti/ui/profile_page.dart';
+import 'package:capstone_project_jti/widgets/card_widget.dart';
+import 'package:capstone_project_jti/widgets/list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project_jti/common/style.dart';
 
-
-class HomeWidget extends StatelessWidget {
-  const HomeWidget({
+class HomePage extends StatelessWidget {
+  const HomePage({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
         child: SingleChildScrollView(
             child: Column(
       children: [
         Stack(clipBehavior: Clip.none, children: <Widget>[
           Container(
-            width: 360,
-            height: 200,
+            height: size.height * 0.2,
             decoration: BoxDecoration(
                 color: primaryColor,
                 borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20))),
+                    bottomLeft: Radius.circular(45),
+                    bottomRight: Radius.circular(45))),
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -39,7 +40,7 @@ class HomeWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 145,
+            top: 100,
             left: 0,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -65,7 +66,8 @@ class HomeWidget extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 5.0),
-                      Text('Penginapan', style: Theme.of(context).textTheme.subtitle2),
+                      Text('Penginapan',
+                          style: Theme.of(context).textTheme.subtitle2),
                     ],
                   ),
                   SizedBox(width: 15.0),
@@ -87,7 +89,8 @@ class HomeWidget extends StatelessWidget {
                         ),
                       ]),
                       SizedBox(height: 5.0),
-                      Text('Kuliner', style: Theme.of(context).textTheme.subtitle2)
+                      Text('Kuliner',
+                          style: Theme.of(context).textTheme.subtitle2)
                     ],
                   )
                 ],
@@ -106,13 +109,7 @@ class HomeWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               SizedBox(height: 10.0),
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(25.0),
-                  child: Image.asset(
-                    'asset/malioboro.png',
-                    width: 250,
-                  )),
-              Text('Malioboro', style: Theme.of(context).textTheme.headline4),
+              ComponentCardWidget(cardHeight: 150.0)
             ],
           ),
         ),
@@ -122,19 +119,9 @@ class HomeWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-        Text('Rekomendasi', style: Theme.of(context).textTheme.headline3),
-        SizedBox(height: 10.0),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.asset(
-                  'asset/malioboro.png',
-                  width: 150,
-                ),
-              ),
-              Text(
-                'Malioboro',
-                style: Theme.of(context).textTheme.headline4,
-              )
+              Text('Rekomendasi', style: Theme.of(context).textTheme.headline3),
+              SizedBox(height: 10.0),
+              ComponentCardWidget(cardHeight: 100.0)
             ],
           ),
         ),

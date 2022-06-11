@@ -1,24 +1,26 @@
 import 'package:capstone_project_jti/common/style.dart';
-import 'package:capstone_project_jti/widgets/detail_page.dart';
-import 'package:capstone_project_jti/widgets/home.dart';
-import 'package:capstone_project_jti/widgets/profile_page.dart';
+import 'package:capstone_project_jti/ui/detail_page.dart';
+import 'package:capstone_project_jti/ui/home_page.dart';
+import 'package:capstone_project_jti/ui/profile_page.dart';
+import 'package:capstone_project_jti/ui/search_page.dart';
 import 'package:flutter/material.dart';
 
-class PageViewNew extends StatefulWidget {
+class myPageView extends StatefulWidget {
   static const routeName = '/page_view';
 
-  const PageViewNew({Key key}) : super(key: key);
+  const myPageView({Key key}) : super(key: key);
 
   @override
-  _PageViewNewState createState() => _PageViewNewState();
+  _myPageViewState createState() => _myPageViewState();
 }
 
-class _PageViewNewState extends State<PageViewNew> {
+class _myPageViewState extends State<myPageView> {
   int pageIndex = 0;
 
   final List<Widget> page = [
-    HomeWidget(),
-    ProfileWidget(),
+    HomePage(),
+    SearchPage(),
+    ProfilePage(),
   ];
 
   void onTapped(int index) {
@@ -41,24 +43,26 @@ class _PageViewNewState extends State<PageViewNew> {
               Icons.home_outlined,
               color: secondaryColor,
             ),
-            label: 'Home Page',
+            label: 'Home',
           ),
-          /*BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              color: Colors.black,
+              color: secondaryColor,
             ),
-            label: 'Search Page',
-          ),*/
+            label: 'Search',
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: Colors.black,
+              color: secondaryColor,
             ),
-            label: 'Profile Page',
+            label: 'Profile',
           ),
         ],
         onTap: onTapped,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
       ),
     );
   }

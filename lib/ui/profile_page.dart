@@ -1,11 +1,12 @@
 import 'package:capstone_project_jti/common/style.dart';
 import 'package:flutter/material.dart';
 
-class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({Key key}) : super(key: key);
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: softColor,
       body: SafeArea(
@@ -14,8 +15,7 @@ class ProfileWidget extends StatelessWidget {
           children: [
             Stack(clipBehavior: Clip.none, children: [
               Container(
-                width: 360,
-                height: 280,
+                height: size.height * 0.3,
                 decoration: BoxDecoration(color: primaryColor),
               ),
               Padding(

@@ -1,9 +1,9 @@
 import 'package:capstone_project_jti/common/style.dart';
 import 'package:capstone_project_jti/page_view.dart';
-import 'package:capstone_project_jti/widgets/profile_page.dart';
+import 'package:capstone_project_jti/ui/profile_page.dart';
 import 'package:capstone_project_jti/widgets/detail_tab.dart';
-import 'package:capstone_project_jti/widgets/home.dart';
-import 'package:capstone_project_jti/widgets/detail_page.dart';
+import 'package:capstone_project_jti/ui/home_page.dart';
+import 'package:capstone_project_jti/ui/detail_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         textTheme: myTextTheme,
         primaryColor: primaryColor,
       ),
-      home: PageViewNew(),
+      home: myPageView(),
     );
   }
 }
