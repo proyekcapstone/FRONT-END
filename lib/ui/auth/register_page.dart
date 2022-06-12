@@ -1,3 +1,4 @@
+import 'package:capstone_project_jti/page_view.dart';
 import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
 import 'package:capstone_project_jti/ui/auth/login_page.dart';
 import 'package:capstone_project_jti/widgets/color_button.dart';
@@ -87,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, LoginPage.routeName);
+                      Navigator.pushNamed(context, myPageView.routeName);
                     },
                     child: const Text(
                       " Sign In",
