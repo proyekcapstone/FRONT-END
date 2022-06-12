@@ -1,12 +1,19 @@
 import 'package:capstone_project_jti/common/style.dart';
+import 'package:capstone_project_jti/firebase_options.dart';
 import 'package:capstone_project_jti/page_view.dart';
-import 'package:capstone_project_jti/ui/profile_page.dart';
-import 'package:capstone_project_jti/widgets/detail_tab.dart';
-import 'package:capstone_project_jti/ui/home_page.dart';
-import 'package:capstone_project_jti/ui/detail_page.dart';
+import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
+import 'package:capstone_project_jti/ui/auth/login_page.dart';
+import 'package:capstone_project_jti/ui/auth/register_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -15,14 +22,44 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Jogja Travel Information',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: myTextTheme,
-        primaryColor: primaryColor,
+    return MultiProvider(
+      providers: [
+        Provider<FirebaseAuthMethods>(
+          create: (_) => FirebaseAuthMethods(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) => context.read<FirebaseAuthMethods>().authState,
+          initialData: null,
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Jogja Travel Information',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          textTheme: myTextTheme,
+          primaryColor: primaryColor,
+        ),
+        home: const AuthWrapper(),
+        routes: {
+          RegisterPage.routeName: (context) => const RegisterPage(),
+          myPageView.routeName: (context) => const myPageView(),
+          LoginPage.routeName: (context) => const LoginPage()
+        },
       ),
-      home: myPageView(),
     );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null) {
+      return const myPageView();
+    }
+    return const LoginPage();
   }
 }

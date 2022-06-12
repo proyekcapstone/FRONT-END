@@ -1,11 +1,15 @@
 import 'package:capstone_project_jti/common/style.dart';
+import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<FirebaseAuthMethods>().user;
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: softColor,
@@ -20,9 +24,17 @@ class ProfilePage extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20.0, left: 20.0),
-                child: Text(
-                  'Hello Strangers',
-                  style: Theme.of(context).textTheme.headline1,
+                child: Column(
+                  children: [
+                    Text(
+                      'Hello Strangers',
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
+                    Text(
+                      user.email,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
                 ),
               ),
               Positioned(
@@ -50,9 +62,12 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Profile',
-                              style: Theme.of(context).textTheme.headline3,
+                            Container(
+                              margin: EdgeInsets.only(top: 60),
+                              child: Text(
+                                'Profile',
+                                style: Theme.of(context).textTheme.headline3,
+                              ),
                             ),
                             SizedBox(height: 15.0),
                             Text(
@@ -89,7 +104,19 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ))
-            ])
+            ]),
+            Container(
+              margin: EdgeInsets.only(top: 16),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(300, 40),
+                ),
+                child: const Text('Sign Out'),
+                onPressed: () async {
+                  await context.read<FirebaseAuthMethods>().signOut(context);
+                },
+              ),
+            ),
           ],
         ),
       )),
