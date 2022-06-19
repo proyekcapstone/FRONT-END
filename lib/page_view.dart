@@ -1,5 +1,6 @@
+// ignore_for_file: camel_case_types
+
 import 'package:capstone_project_jti/common/style.dart';
-import 'package:capstone_project_jti/ui/detail_page.dart';
 import 'package:capstone_project_jti/ui/home_page.dart';
 import 'package:capstone_project_jti/ui/profile_page.dart';
 import 'package:capstone_project_jti/ui/search_page.dart';
@@ -18,9 +19,9 @@ class _myPageViewState extends State<myPageView> {
   int pageIndex = 0;
 
   final List<Widget> page = [
-    HomePage(),
-    SearchPage(),
-    ProfilePage(),
+    const HomePage(),
+    const SearchPage(),
+    const ProfilePage(),
   ];
 
   void onTapped(int index) {
@@ -37,7 +38,7 @@ class _myPageViewState extends State<myPageView> {
         currentIndex: pageIndex,
         backgroundColor: primaryColor,
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
@@ -61,8 +62,8 @@ class _myPageViewState extends State<myPageView> {
           ),
         ],
         onTap: onTapped,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: secondaryColor,
+        unselectedItemColor: softColor,
       ),
     );
   }

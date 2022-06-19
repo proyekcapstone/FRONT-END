@@ -13,20 +13,23 @@ class SearchPage extends StatelessWidget {
           child: SingleChildScrollView(
               child: Column(
         children: [
-          Stack(
-            children: [Container(
+          Stack(children: [
+            Container(
               height: size.height * 0.25,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: softColor,
-                  borderRadius: const BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(45),
                       bottomRight: Radius.circular(45))),
             ),
-            Padding(padding: EdgeInsets.all(20.0),
-            child: Text('Search', style: Theme.of(context).textTheme.headline1),)
-        ]),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child:
+                  Text('Search', style: Theme.of(context).textTheme.headline1),
+            )
+          ]),
+          const Padding(
+            padding: EdgeInsets.all(20.0),
             child: TextField(
               controller: null,
               decoration: InputDecoration(
@@ -40,9 +43,7 @@ class SearchPage extends StatelessWidget {
                   )),
             ),
           ),
-          ComponentListWidget(
-            listHeight: 100.0,
-          )
+          const ComponentListWidget(),
         ],
       ))),
     );

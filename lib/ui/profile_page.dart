@@ -20,10 +20,10 @@ class ProfilePage extends StatelessWidget {
             Stack(clipBehavior: Clip.none, children: [
               Container(
                 height: size.height * 0.3,
-                decoration: BoxDecoration(color: primaryColor),
+                decoration: const BoxDecoration(color: primaryColor),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 20.0, left: 20.0),
+                padding: const EdgeInsets.only(top: 20.0, left: 20.0),
                 child: Column(
                   children: [
                     Text(
@@ -46,7 +46,7 @@ class ProfilePage extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: Colors.white),
-                    child: Icon(Icons.person),
+                    child: const Icon(Icons.person),
                   )),
               Positioned(
                   top: 230,
@@ -63,18 +63,18 @@ class ProfilePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(top: 60),
+                              margin: const EdgeInsets.only(top: 60),
                               child: Text(
                                 'Profile',
                                 style: Theme.of(context).textTheme.headline3,
                               ),
                             ),
-                            SizedBox(height: 15.0),
+                            const SizedBox(height: 15.0),
                             Text(
                               'Favorite',
                               style: Theme.of(context).textTheme.headline3,
                             ),
-                            SizedBox(height: 15.0),
+                            const SizedBox(height: 15.0),
                             Text(
                               'Settings',
                               style: Theme.of(context).textTheme.headline3,
@@ -86,15 +86,15 @@ class ProfilePage extends StatelessWidget {
                                   'Notification',
                                   style: Theme.of(context).textTheme.bodyText1,
                                 ),
-                                Icon(Icons.radio_button_checked)
+                                const Icon(Icons.radio_button_checked)
                               ],
                             ),
-                            SizedBox(height: 15.0),
+                            const SizedBox(height: 15.0),
                             Text(
                               'About',
                               style: Theme.of(context).textTheme.headline3,
                             ),
-                            SizedBox(height: 15.0),
+                            const SizedBox(height: 15.0),
                             Text(
                               'Logout',
                               style: Theme.of(context).textTheme.headline3,
@@ -106,7 +106,7 @@ class ProfilePage extends StatelessWidget {
                   ))
             ]),
             Container(
-              margin: EdgeInsets.only(top: 16),
+              margin: const EdgeInsets.only(top: 16),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(300, 40),

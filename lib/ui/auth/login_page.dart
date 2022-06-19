@@ -1,4 +1,3 @@
-import 'package:capstone_project_jti/common/style.dart';
 import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
 import 'package:capstone_project_jti/ui/auth/register_page.dart';
 import 'package:capstone_project_jti/widgets/color_button.dart';

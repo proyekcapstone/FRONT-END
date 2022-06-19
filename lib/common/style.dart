@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-var primaryColor = Colors.brown[400];
-var secondaryColor = Colors.brown[700];
-var softColor = Colors.brown[100];
+const Color primaryColor = Color(0xFFBDA899);
+const Color secondaryColor = Color(0xFF90735F);
+const Color softColor = Color(0xFFFDF0E7);
 
 final myTextTheme = TextTheme(
   headline1: GoogleFonts.montserrat(
