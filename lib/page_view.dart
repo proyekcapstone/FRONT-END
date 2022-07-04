@@ -1,28 +1,70 @@
 // ignore_for_file: camel_case_types
 
 import 'package:capstone_project_jti/common/style.dart';
+<<<<<<< HEAD
 import 'package:capstone_project_jti/ui/home_page.dart';
+=======
+import 'package:capstone_project_jti/data/db/database_helper.dart';
+import 'package:capstone_project_jti/helpers/notification_helper.dart';
+import 'package:capstone_project_jti/provider/destination/database_destination_provider.dart';
+
+/* UI */
+import 'package:capstone_project_jti/ui/destination/detail_page.dart';
+import 'package:capstone_project_jti/ui/destination/home_page.dart';
+import 'package:capstone_project_jti/ui/favorite_page.dart';
+>>>>>>> 2b7db54 (final commit)
 import 'package:capstone_project_jti/ui/profile_page.dart';
-import 'package:capstone_project_jti/ui/search_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
-class myPageView extends StatefulWidget {
-  static const routeName = '/page_view';
+class MyPageView extends StatefulWidget {
+  static const routeName = '/page-view';
 
-  const myPageView({Key key}) : super(key: key);
+  const MyPageView({Key key}) : super(key: key);
 
   @override
-  _myPageViewState createState() => _myPageViewState();
+  _MyPageViewState createState() => _MyPageViewState();
 }
 
-class _myPageViewState extends State<myPageView> {
+class _MyPageViewState extends State<MyPageView> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
   int pageIndex = 0;
 
   final List<Widget> page = [
+<<<<<<< HEAD
     const HomePage(),
     const SearchPage(),
+=======
+    const DestinationHomePage(),
+    ChangeNotifierProvider<DatabaseDestinationProvider>(
+      create: (_) =>
+          DatabaseDestinationProvider(databaseHelper: DatabaseHelper()),
+      child: const FavoritePage(),
+    ),
+>>>>>>> 2b7db54 (final commit)
     const ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(DestinationDetailPage.routeName);
+
+    if (FirebaseAuth.instance.currentUser.emailVerified == false) {
+      GoogleSignIn().signOut();
+      FirebaseAuth.instance.signOut();
+    }
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
 
   void onTapped(int index) {
     setState(() {
@@ -41,29 +83,31 @@ class _myPageViewState extends State<myPageView> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
-              color: secondaryColor,
+              Icons.home_filled,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
-              color: secondaryColor,
+              Icons.favorite,
             ),
-            label: 'Search',
+            label: 'Favorite',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: secondaryColor,
             ),
             label: 'Profile',
           ),
         ],
         onTap: onTapped,
+<<<<<<< HEAD
         selectedItemColor: secondaryColor,
         unselectedItemColor: softColor,
+=======
+        selectedItemColor: softColor,
+        unselectedItemColor: secondaryColor,
+>>>>>>> 2b7db54 (final commit)
       ),
     );
   }

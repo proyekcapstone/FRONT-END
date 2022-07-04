@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+=======
+import 'package:capstone_project_jti/page_view.dart';
+>>>>>>> 2b7db54 (final commit)
 import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
 import 'package:capstone_project_jti/ui/auth/register_page.dart';
 import 'package:capstone_project_jti/widgets/color_button.dart';
 import 'package:capstone_project_jti/widgets/input_item.dart';
 import 'package:capstone_project_jti/widgets/oauth_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,14 +22,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  void signInUser() async {
-    await context.read<FirebaseAuthMethods>().loginWithEmail(
-          email: _emailController.text,
-          password: _passwordController.text,
-          context: context,
-        );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +56,13 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 25,
               ),
-              colorButton(context, "Sign In", signInUser),
+              colorButton(context, "Sign In", () async {
+                await context.read<FirebaseAuthMethods>().loginWithEmail(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      context: context,
+                    );
+              }),
               const SizedBox(
                 height: 25,
               ),
@@ -73,8 +76,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 20,
               ),
-              OAuthButton(context, "asset/google.svg", "Google", 25, () {
-                context.read<FirebaseAuthMethods>().signInWithGoogle(context);
+              OAuthButton(context, "asset/google.svg", "Google", 25, () async {
+                await context
+                    .read<FirebaseAuthMethods>()
+                    .signInWithGoogle(context);
+                Navigator.pushReplacementNamed(context, MyPageView.routeName);
               }),
               const SizedBox(
                 height: 20,

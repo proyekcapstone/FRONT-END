@@ -1,7 +1,10 @@
+import 'package:capstone_project_jti/page_view.dart';
+import 'package:capstone_project_jti/utils/show_snackbar.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:capstone_project_jti/utils/show_snackbar.dart';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
@@ -15,20 +18,35 @@ class FirebaseAuthMethods {
 
   // Email Sign Up
   Future<void> signUpWithEmail({
+    String username,
     String email,
     String password,
     BuildContext context,
   }) async {
-    try {
-      await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      // await sendEmailVerification(context);
-      Navigator.pop(context);
-      showSnackBar(context, 'Registrasi Berhasil!');
-    } on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.message);
+    if (password.isNotEmpty && email.isNotEmpty && username.isNotEmpty) {
+      try {
+        await _auth
+            .createUserWithEmailAndPassword(
+              email: email,
+              password: password,
+            )
+            .then(
+              (auth) => {
+                auth.user.updateDisplayName(username),
+              },
+            );
+
+        await sendEmailVerification(context);
+
+        await _auth.signOut();
+
+        Navigator.pop(context);
+        showSnackBar(context, 'Please Verify Your Email First');
+      } on FirebaseAuthException catch (e) {
+        showSnackBar(context, e.message);
+      }
+    } else {
+      showSnackBar(context, 'All inputs must be filled');
     }
   }
 
@@ -39,15 +57,31 @@ class FirebaseAuthMethods {
     BuildContext context,
   }) async {
     try {
-      await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      // if (!(_auth.currentUser.emailVerified)) {
-      //   showSnackBar(context, 'Please Verify Email Verification!');
-      // }
+      await _auth
+          .signInWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then((auth) => {
+                if (auth.user.emailVerified == false)
+                  {
+                    _auth.signOut(),
+                    showSnackBar(context, 'Please Verify Your Email'),
+                  }
+                else
+                  {
+                    Navigator.pushReplacementNamed(
+                        context, MyPageView.routeName)
+                  }
+              });
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.message);
+      if (e.code == 'user-not-found') {
+        showSnackBar(context, e.message);
+      } else if (e.code == 'wrong-password') {
+        showSnackBar(context, e.message);
+      } else {
+        showSnackBar(context, e.message);
+      }
     }
   }
 
@@ -73,8 +107,7 @@ class FirebaseAuthMethods {
           accessToken: googleAuth?.accessToken,
           idToken: googleAuth?.idToken,
         );
-        UserCredential userCredential =
-            await _auth.signInWithCredential(credential);
+        await _auth.signInWithCredential(credential);
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message);

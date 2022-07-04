@@ -2,7 +2,7 @@ import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
 import 'package:capstone_project_jti/ui/auth/login_page.dart';
 import 'package:capstone_project_jti/widgets/color_button.dart';
 import 'package:capstone_project_jti/widgets/input_item.dart';
-import 'package:capstone_project_jti/widgets/oauth_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,16 +15,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  void signUpUser() async {
-    await context.read<FirebaseAuthMethods>().signUpWithEmail(
-          email: _emailController.text,
-          password: _passwordController.text,
-          context: context,
-        );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +44,10 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 50,
               ),
+              InputItem("Username", _usernameController, false, context),
+              const SizedBox(
+                height: 25,
+              ),
               InputItem("Email", _emailController, false, context),
               const SizedBox(
                 height: 25,
@@ -59,19 +56,13 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 25,
               ),
-              colorButton(context, "Sign Up", signUpUser),
-              const SizedBox(
-                height: 35,
-              ),
-              const Text(
-                "Atau Login dengan Google",
-                style: TextStyle(fontSize: 14),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              OAuthButton(context, "asset/google.svg", "Google", 25, () {
-                context.read<FirebaseAuthMethods>().signInWithGoogle(context);
+              colorButton(context, "Sign Up", () async {
+                await context.read<FirebaseAuthMethods>().signUpWithEmail(
+                      username: _usernameController.text,
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      context: context,
+                    );
               }),
               const SizedBox(
                 height: 20,
