@@ -6,16 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:capstone_project_jti/page_view.dart';
-<<<<<<< HEAD
-import 'package:capstone_project_jti/provider/culinary_provider.dart';
-import 'package:capstone_project_jti/provider/destination_provider.dart';
-import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
-import 'package:capstone_project_jti/provider/hotel_provider.dart';
-import 'package:capstone_project_jti/ui/auth/login_page.dart';
-import 'package:capstone_project_jti/ui/auth/register_page.dart';
-import 'package:capstone_project_jti/ui/home_page.dart';
-//import 'package:capstone_project_jti/ui/detail_page.dart';
-=======
 import 'package:capstone_project_jti/firebase_options.dart';
 
 /* Common */
@@ -68,7 +58,6 @@ import 'package:capstone_project_jti/ui/hotel/search_page.dart';
 import 'package:capstone_project_jti/ui/hotel/terbaru_page.dart';
 
 /* External */
->>>>>>> 2b7db54 (final commit)
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
@@ -76,12 +65,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-
-import 'api/culinary_source.dart';
-import 'api/destination_source.dart';
-import 'api/hotel_source.dart';
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -121,56 +105,25 @@ class MyApp extends StatelessWidget {
           create: (context) => context.read<FirebaseAuthMethods>().authState,
           initialData: null,
         ),
-<<<<<<< HEAD
-        ChangeNotifierProvider<DestinationProvider>(
-          create: (_) => DestinationProvider(destinationSource: DestinationSource()),
-        ),
-        ChangeNotifierProvider<HotelProvider>(
-          create: (_) => HotelProvider(hotelSource: HotelSource()),
-        ),
-        ChangeNotifierProvider<CulinaryProvider>(
-          create: (_) => CulinaryProvider(culinarySource: CulinarySource()),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Jogja Travel Information',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          textTheme: myTextTheme,
-          primaryColor: primaryColor,
-        ),
-        home: const HomePage(),
-        //const AuthWrapper(),
-        routes: {
-          RegisterPage.routeName: (context) => const RegisterPage(),
-          myPageView.routeName: (context) => const myPageView(),
-          LoginPage.routeName: (context) => const LoginPage()
-        },
-      ),
-=======
         ChangeNotifierProvider(
-          create: (_) =>
-              DatabaseDestinationProvider(databaseHelper: DatabaseHelper()),
+          create: (_) => DatabaseDestinationProvider(databaseHelper: DatabaseHelper()),
         ),
         ChangeNotifierProvider(
           create: (_) => SchedulingProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => PreferencesProvider(
-            preferencesHelper: PreferencesHelper(
-                sharedPreferences: SharedPreferences.getInstance()),
+            preferencesHelper: PreferencesHelper(sharedPreferences: SharedPreferences.getInstance()),
           ),
         ),
 
         /* Destination */
 
         ChangeNotifierProvider<DestinationProvider>(
-          create: (_) =>
-              DestinationProvider(apiService: DestinationApiService()),
+          create: (_) => DestinationProvider(apiService: DestinationApiService()),
         ),
         ChangeNotifierProvider<SearchDestinationProvider>(
-          create: (_) =>
-              SearchDestinationProvider(apiService: DestinationApiService()),
+          create: (_) => SearchDestinationProvider(apiService: DestinationApiService()),
         ),
 
         /* Hotel */
@@ -178,8 +131,7 @@ class MyApp extends StatelessWidget {
           create: (_) => HotelProvider(apiService: HotelApiService()),
         ),
         ChangeNotifierProvider<SearchDestinationProvider>(
-          create: (_) =>
-              SearchDestinationProvider(apiService: DestinationApiService()),
+          create: (_) => SearchDestinationProvider(apiService: DestinationApiService()),
         ),
         ChangeNotifierProvider<SearchHotelProvider>(
           create: (_) => SearchHotelProvider(apiService: HotelApiService()),
@@ -191,8 +143,7 @@ class MyApp extends StatelessWidget {
           create: (_) => CulinaryProvider(apiService: CulinaryApiService()),
         ),
         ChangeNotifierProvider<SearchCulinaryProvider>(
-          create: (_) =>
-              SearchCulinaryProvider(apiService: CulinaryApiService()),
+          create: (_) => SearchCulinaryProvider(apiService: CulinaryApiService()),
         ),
       ],
       child: Consumer<PreferencesProvider>(builder: (context, provider, child) {
@@ -213,53 +164,37 @@ class MyApp extends StatelessWidget {
             AboutPage.routeName: (context) => const AboutPage(),
 
             /* Destination */
-            DestinationSearchPage.routeName: (context) =>
-                const DestinationSearchPage(),
-            DestinationDetailPage.routeName: (context) => DestinationDetailPage(
-                destinations: ModalRoute.of(context)?.settings?.arguments
-                    as DestinationResult),
+            DestinationSearchPage.routeName: (context) => const DestinationSearchPage(),
+            DestinationDetailPage.routeName: (context) =>
+                DestinationDetailPage(destinations: ModalRoute.of(context)?.settings?.arguments as DestinationResult),
             DestinationTerbaruPage.routeName: (context) =>
-                DestinationTerbaruPage(
-                    destination: ModalRoute.of(context)?.settings?.arguments
-                        as DestinationResult),
-            DestinationRekomendasiPage.routeName: (context) =>
-                DestinationRekomendasiPage(
-                    destination: ModalRoute.of(context)?.settings?.arguments
-                        as DestinationResult),
+                DestinationTerbaruPage(destination: ModalRoute.of(context)?.settings?.arguments as DestinationResult),
+            DestinationRekomendasiPage.routeName: (context) => DestinationRekomendasiPage(
+                destination: ModalRoute.of(context)?.settings?.arguments as DestinationResult),
 
             /* Hotel */
             HotelSearchPage.routeName: (context) => const HotelSearchPage(),
             HotelHomePage.routeName: (context) => const HotelHomePage(),
-            HotelDetailPage.routeName: (context) => HotelDetailPage(
-                hotels:
-                    ModalRoute.of(context)?.settings?.arguments as HotelResult),
-            HotelTerbaruPage.routeName: (context) => HotelTerbaruPage(
-                hotel:
-                    ModalRoute.of(context)?.settings?.arguments as HotelResult),
-            HotelRekomendasiPage.routeName: (context) => HotelRekomendasiPage(
-                hotel:
-                    ModalRoute.of(context)?.settings?.arguments as HotelResult),
+            HotelDetailPage.routeName: (context) =>
+                HotelDetailPage(hotels: ModalRoute.of(context)?.settings?.arguments as HotelResult),
+            HotelTerbaruPage.routeName: (context) =>
+                HotelTerbaruPage(hotel: ModalRoute.of(context)?.settings?.arguments as HotelResult),
+            HotelRekomendasiPage.routeName: (context) =>
+                HotelRekomendasiPage(hotel: ModalRoute.of(context)?.settings?.arguments as HotelResult),
 
             /* Culinary */
-            CulinaryHomePage.routeName: (context) => CulinaryHomePage(
-                culinaries: ModalRoute.of(context)?.settings?.arguments
-                    as CulinaryResult),
-            CulinarySearchPage.routeName: (context) =>
-                const CulinarySearchPage(),
-            CulinaryDetailPage.routeName: (context) => CulinaryDetailPage(
-                culinaries: ModalRoute.of(context)?.settings?.arguments
-                    as CulinaryResult),
-            CulinaryTerbaruPage.routeName: (context) => CulinaryTerbaruPage(
-                culinary: ModalRoute.of(context)?.settings?.arguments
-                    as CulinaryResult),
+            CulinaryHomePage.routeName: (context) =>
+                CulinaryHomePage(culinaries: ModalRoute.of(context)?.settings?.arguments as CulinaryResult),
+            CulinarySearchPage.routeName: (context) => const CulinarySearchPage(),
+            CulinaryDetailPage.routeName: (context) =>
+                CulinaryDetailPage(culinaries: ModalRoute.of(context)?.settings?.arguments as CulinaryResult),
+            CulinaryTerbaruPage.routeName: (context) =>
+                CulinaryTerbaruPage(culinary: ModalRoute.of(context)?.settings?.arguments as CulinaryResult),
             CulinaryRekomendasiPage.routeName: (context) =>
-                CulinaryRekomendasiPage(
-                    culinary: ModalRoute.of(context)?.settings?.arguments
-                        as CulinaryResult),
+                CulinaryRekomendasiPage(culinary: ModalRoute.of(context)?.settings?.arguments as CulinaryResult),
           },
         );
       }),
->>>>>>> 2b7db54 (final commit)
     );
   }
 }
@@ -270,7 +205,6 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
-    print(firebaseUser);
 
     if (firebaseUser != null) {
       return const MyPageView();

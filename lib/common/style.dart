@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 const Color primaryColor = Color(0xFFBDA899);
 const Color secondaryColor = Color(0xFF90735F);
 const Color softColor = Color(0xFFFDF0E7);
-<<<<<<< HEAD
-=======
 const Color darkPrimaryColor = Color(0xFF202020);
 
 ThemeData lightTheme = ThemeData(
@@ -31,7 +29,6 @@ ThemeData darkTheme = ThemeData(
   textTheme: myTextTheme,
   primaryColor: secondaryColor,
 );
->>>>>>> 2b7db54 (final commit)
 
 final myTextTheme = TextTheme(
   headline1: GoogleFonts.montserrat(

@@ -1,9 +1,4 @@
-// ignore_for_file: camel_case_types
-
 import 'package:capstone_project_jti/common/style.dart';
-<<<<<<< HEAD
-import 'package:capstone_project_jti/ui/home_page.dart';
-=======
 import 'package:capstone_project_jti/data/db/database_helper.dart';
 import 'package:capstone_project_jti/helpers/notification_helper.dart';
 import 'package:capstone_project_jti/provider/destination/database_destination_provider.dart';
@@ -12,7 +7,6 @@ import 'package:capstone_project_jti/provider/destination/database_destination_p
 import 'package:capstone_project_jti/ui/destination/detail_page.dart';
 import 'package:capstone_project_jti/ui/destination/home_page.dart';
 import 'package:capstone_project_jti/ui/favorite_page.dart';
->>>>>>> 2b7db54 (final commit)
 import 'package:capstone_project_jti/ui/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,17 +28,12 @@ class _MyPageViewState extends State<MyPageView> {
   int pageIndex = 0;
 
   final List<Widget> page = [
-<<<<<<< HEAD
-    const HomePage(),
-    const SearchPage(),
-=======
     const DestinationHomePage(),
     ChangeNotifierProvider<DatabaseDestinationProvider>(
       create: (_) =>
           DatabaseDestinationProvider(databaseHelper: DatabaseHelper()),
       child: const FavoritePage(),
     ),
->>>>>>> 2b7db54 (final commit)
     const ProfilePage(),
   ];
 
@@ -101,13 +90,8 @@ class _MyPageViewState extends State<MyPageView> {
           ),
         ],
         onTap: onTapped,
-<<<<<<< HEAD
-        selectedItemColor: secondaryColor,
-        unselectedItemColor: softColor,
-=======
         selectedItemColor: softColor,
         unselectedItemColor: secondaryColor,
->>>>>>> 2b7db54 (final commit)
       ),
     );
   }

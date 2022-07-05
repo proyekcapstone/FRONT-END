@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import 'package:capstone_project_jti/page_view.dart';
->>>>>>> 2b7db54 (final commit)
 import 'package:capstone_project_jti/provider/firebase_auth_methods.dart';
 import 'package:capstone_project_jti/ui/auth/register_page.dart';
 import 'package:capstone_project_jti/widgets/color_button.dart';

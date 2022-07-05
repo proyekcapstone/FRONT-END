@@ -57,23 +57,14 @@ class _DetailTabState extends State<DetailTab> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-<<<<<<< HEAD
-=======
                                 /* Harga Tiket */
 
->>>>>>> 2b7db54 (final commit)
                                 const SizedBox(height: 10.0),
                                 Text(
                                   'Harga Tiket',
                                   style: Theme.of(context).textTheme.headline4,
                                 ),
                                 const SizedBox(height: 5.0),
-<<<<<<< HEAD
-                                Text('Rp 10.000 per orang',
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2),
-                                const SizedBox(height: 15.0),
-=======
                                 Text(
                                     '${CurrencyFormat.convertToIdr(widget.destination.ticket, 2)} per orang',
                                     style:
@@ -82,60 +73,11 @@ class _DetailTabState extends State<DetailTab> {
 
                                 /* No Telephone */
 
->>>>>>> 2b7db54 (final commit)
                                 Text(
                                   'No Telephone',
                                   style: Theme.of(context).textTheme.headline4,
                                 ),
-<<<<<<< HEAD
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Icon(Icons.bike_scooter),
-                                        const SizedBox(width: 15.0),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Becak',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2,
-                                            ),
-                                            Text(
-                                              'Rp 10.000',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Text('2 orang',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyText2),
-                                        Text(
-                                          '9 pagi - 16 sore',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText2,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(height: 15.0),
-=======
                                 const SizedBox(height: 5.0),
->>>>>>> 2b7db54 (final commit)
                                 Text(
                                   '+62${widget.destination.telephone}',
                                   style: Theme.of(context).textTheme.bodyText2,
@@ -154,12 +96,9 @@ class _DetailTabState extends State<DetailTab> {
                                   style: Theme.of(context).textTheme.bodyText2,
                                 ),
                                 const SizedBox(height: 15.0),
-<<<<<<< HEAD
-=======
 
                                 /* Open Day */
 
->>>>>>> 2b7db54 (final commit)
                                 Text(
                                   'Open Day',
                                   style: Theme.of(context).textTheme.headline4,
@@ -170,8 +109,6 @@ class _DetailTabState extends State<DetailTab> {
                                   style: Theme.of(context).textTheme.bodyText2,
                                 ),
                                 const SizedBox(height: 15.0),
-<<<<<<< HEAD
-=======
 
                                 /* Instagram */
 
@@ -273,7 +210,6 @@ class _DetailTabState extends State<DetailTab> {
                                 //   style: Theme.of(context).textTheme.bodyText1,
                                 // ),
                                 const SizedBox(height: 15.0),
->>>>>>> 2b7db54 (final commit)
                               ],
                             ),
                           )),
@@ -283,12 +219,8 @@ class _DetailTabState extends State<DetailTab> {
                       child: Column(
                         children: [
                           Container(
-<<<<<<< HEAD
-                              margin: const EdgeInsets.only(top: 15.0, bottom: 15.0),
-=======
                               margin: const EdgeInsets.only(
                                   top: 15.0, bottom: 15.0),
->>>>>>> 2b7db54 (final commit)
                               height: 150,
                               width: 300,
                               color: Colors.grey,
