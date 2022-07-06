@@ -66,19 +66,6 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                "Atau Login dengan Google",
-                style: TextStyle(fontSize: 14),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              OAuthButton(context, "asset/google.svg", "Google", 25, () async {
-                await context
-                    .read<FirebaseAuthMethods>()
-                    .signInWithGoogle(context);
-                Navigator.pushReplacementNamed(context, MyPageView.routeName);
-              }),
               const SizedBox(
                 height: 20,
               ),
@@ -97,10 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: const Text(
                       " Sign Up",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.brown),
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.brown),
                     ),
                   ),
                 ],
